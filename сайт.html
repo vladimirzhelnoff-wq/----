@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Очки дополненной реальности</title>
+    <style>
+        :root {
+            --text-color: #ffffff;
+            --accent-color: #a855f7;
+            --bg-overlay: rgba(0, 0, 0, 0.6);
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-color);
+            height: 100%;
+            overflow-x: hidden;
+        }
+
+        /* Фоновое изображение сайта */
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('фон.jpg');
+            background-size: cover;
+            z-index: -2;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-overlay);
+            z-index: -1;
+        }
+
+        /* Навигация (Кнопки) */
+        nav {
+            position: sticky;
+            top: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 100;
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: 2px solid var(--accent-color);
+            color: white;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
+
+        .nav-btn:hover {
+            background: var(--accent-color);
+            transform: scale(1.1);
+            box-shadow: 0 0 15px var(--accent-color);
+        }
+
+        /* Контент страниц */
+        .page {
+            display: none;
+            padding: 40px 10%;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1, h2 {
+            color: var(--accent-color);
+            text-align: center;
+        }
+
+        .content-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+            line-height: 1.6;
+        }
+
+        .home-btn {
+            display: block;
+            width: 200px;
+            margin: 30px auto;
+            background: white;
+            color: black;
+            text-align: center;
+            padding: 12px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .home-btn:hover {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        /* Стили для таблицы */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: rgba(0,0,0,0.5);
+            font-size: 0.9rem;
+        }
+        th, td {
+            border: 1px solid white;
+            padding: 10px;
+            text-align: left;
+        }
+        th { background: var(--accent-color); }
+
+        .ar-images {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .ar-card {
+            text-align: center;
+
+        }
+        
+        .ar-card img {
+            width: 100%;
+            border-radius: 10px;
+            border: 1px solid var(--accent-color);
+        }
+        img {
+            margin: 20px;
+        }   
+    </style>
+</head>
+<body>
+
+<div class="background"></div>
+<div class="overlay"></div>
+
+<nav id="main-nav">
+    <button class="nav-btn" onclick="showPage('page2')">Дополненная реальность</button>
+    <button class="nav-btn" onclick="showPage('page3')">История создания</button>
+    <button class="nav-btn" onclick="showPage('page4')">Строение очков</button>
+    <button class="nav-btn" onclick="showPage('page5')">Особенности моделей</button>
+    <button class="nav-btn" onclick="showPage('page6')">Сравнение моделей</button>
+    <button class="nav-btn" onclick="showPage('page7')">Применение очков</button>
+</nav>
+
+<!-- СТРАНИЦА 1: ПУТЕВОДИТЕЛЬ -->
+<div id="page1" class="page active">
+    <h1>Очки дополненной реальности</h1>
+    <div class="content-box">
+        <p>Дополненная реальность (AR от англ. Augmented Reality) — это технология, которая накладывает цифровую информацию на реальные объекты. Настоящий мир дополняется цифровыми элементами: текстом, картинками, 3D-объектами и анимацией.</p>
+        <p>Это следующий шаг в эволюции человеко-машинного взаимодействия, который обещает заменить смартфоны и компьютеры, перенеся интерфейсы прямо в наше поле зрения.</p>
+        
+        <div class="ar-images">
+            <div class="ar-card">
+                <p>Apple Vision Pro</p>
+                <p><img src="apple.jpg" alt="apple"></p>
+                
+            </div>
+            <div class="ar-card">
+                <p>Microsoft HoloLens 2</p>
+                <p><img src="holo.jpg" alt="holo"></p>
+                
+            </div>
+            <div class="ar-card">
+                <p>Xreal Air 2</p>
+                <p><img src="xreal.jpg" alt="xreal"></p>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- СТРАНИЦА 2: ГЛАВА 1.1 -->
+<div id="page2" class="page">
+    <h2>Что такое Дополненная реальность?</h2>
+    <div class="content-box">
+        <p>AR — это среда, в которой в реальном времени объединены физические и виртуальные объекты. Главное отличие дополненной реальности от виртуальной (VR) заключается в том, что она не заменяет реальный мир, а дополняет его. Это делает технологию удобной для использования как в повседневной жизни, так и в профессиональной деятельности.</p>
+        <p><strong>Ключевые признаки дополненной реальности:</strong></p>
+        <ol>
+            <li>Прозрачность (вы видите мир сквозь линзы);</li>
+            <li>Пространственная стабильность (объекты закреплены в пространстве);</li>
+            <li>Интерактивность в реальном времени.</li>
+        </ol>
+        <center>
+        <p><img src="1.jpg" alt="1"> <img src="2.jpg" alt="2"> <img src="3.jpg" alt="3"></p>
+        </center>
+    </div>
+    <a href="#" class="home-btn" onclick="showPage('page1')">На главную</a>
+</div>
+
+<!-- СТРАНИЦА 3: ГЛАВА 1.2 -->
+<div id="page3" class="page">
+    <h2>История создания</h2>
+    <div class="content-box">
+        <p>Развитие дополненной реальности началось ещё в XX веке. Одним из первых устройств считается система, созданная в 1968 году, которая могла отображать простые компьютерные изображения поверх реального мира.</p>
+        <p>Со временем технологии стали развиваться быстрее. В 2000-х годах появились первые устройства для массового рынка, а в настоящее время создаются более совершенные модели, которые активно используются в различных сферах.</p>
+        <center>
+        <p><img src="5.jpg" alt="5"> <img src="4.jpg" alt="4"> <img src="6.jpg" alt="6"></p>
+        </center>
+    </div>
+    <a href="#" class="home-btn" onclick="showPage('page1')">На главную</a>
+</div>
+
+<!-- СТРАНИЦА 4: ГЛАВА 1.3 -->
+<div id="page4" class="page">
+    <h2>Строение AR-очков</h2>
+    <div class="content-box">
+        <p>Очки дополненной реальности состоят из нескольких основных элементов: оптической системы, датчиков и вычислительного блока. Камеры и сенсоры анализируют окружающее пространство, а устройство обрабатывает полученные данные. После этого цифровые объекты отображаются на линзах очков и воспринимаются как часть реального мира. Все процессы происходят в реальном времени, что делает использование технологии удобным.</p>
+        <center>
+        <p><img src="7.jpg" alt="7"> <img src="8.jpg" alt="8"> <img src="9.jpg" alt="9"></p>
+        </center>
+    </div>
+    <a href="#" class="home-btn" onclick="showPage('page1')">На главную</a>
+</div>
+
+<!-- СТРАНИЦА 5: ГЛАВА 1.4 -->
+<div id="page5" class="page">
+    <h2>Особенности моделей</h2>
+    <div class="content-box">
+        <p>Современные очки дополненной реальности отличаются по своим возможностям и области применения. Профессиональные устройства используются в промышленности, медицине и обучении, тогда как более простые модели предназначены для повседневного использования. Например, одни устройства обеспечивают высокую точность и подходят для работы, а другие ориентированы на развлечения и просмотр контента. Одни автономны, а другие зависят от внешнего устройства, к которому они подключаются Это позволяет выбрать модель в зависимости от целей пользователя.</p>
+        <center>
+        <p><img src="10.jpg" alt="10"> <img src="11.jpg" alt="11"> <img src="12.jpg" alt="12"></p>
+        </center>
+    </div>
+    <a href="#" class="home-btn" onclick="showPage('page1')">На главную</a>
+</div>
+
+<!-- СТРАНИЦА 6: ГЛАВА 1.5 -->
+<div id="page6" class="page">
+    <h2>Сравнение моделей</h2>
+    <div class="content-box">
+        <table>
+            <tr>
+                <th>Модель</th>
+                <th>Сегмент</th>
+                <th>Цена</th>
+                <th>Оптическая технология</th>
+                <th>Автономность</th>
+                <th>Трекинг и ввод</th>
+                <th>Разрешение</th>
+                <th>Применение</th>
+            </tr>
+            <tr>
+                <td>HoloLens 2</td>
+                <td>Корпоративный</td>
+                <td>~350000 рублей</td>
+                <td>Волноводы</td>
+                <td>2-3 часа</td>
+                <td>Руки, глаза, голос</td>
+                <td>2К</td>
+                <td>Бизнес, медицина</td>
+            </tr>
+            <tr>
+                <td>Apple Vision Pro</td>
+                <td>Премиум-потребительский</td>
+                <td>~350000 рублей</td>
+                <td>Микро-OLED</td>
+                <td>2 часа</td>
+                <td>Руки, глаза, голос</td>
+                <td>Более 4К</td>
+                <td>Работа, творчество</td>
+            </tr>
+            <tr>
+                <td>Xreal Air 2</td>
+                <td>Потребительский</td>
+                <td>~45000 рублей</td>
+                <td>Birdbath</td>
+                <td>Внешнее устройство</td>
+                <td>гироскоп, сенсор на оправе</td>
+                <td>1920x1080</td>
+                <td>Видео, игры</td>
+            </tr>
+        </table>
+    </div>
+    <a href="#" class="home-btn" onclick="showPage('page1')">На главную</a>
+</div>
+
+<!-- СТРАНИЦА 7: ГЛАВА 1.6 -->
+<div id="page7" class="page">
+    <h2>Применение AR</h2>
+    <div class="content-box">
+        <div class="ar-images">
+            <div class="ar-card">
+                <p><strong>Промышленность:</strong> Цифровые инструкции на сборке (сокращение ошибок на 40%).</p>
+                <p><img src="13.jpg" alt="13"></p>
+                
+            </div>
+            <div class="ar-card">
+                <p><strong>Медицина:</strong> Наложение 3D-моделей органов на тело пациента перед операцией.</p>
+                <p><img src="14.jpg" alt="14"></p>
+                
+            </div>
+            <div class="ar-card">
+                <p><strong>Образование:</strong> Интерактивные учебники и «оживающие» исторические сражения.</p>
+                <p><img src="15.jpg" alt="15"></p>
+                
+            </div>
+            <div class="ar-card">
+                <p><strong>Логистика:</strong> Подсказки маршрутов на складах.</p>
+                <p><img src="16.jpg" alt="16"></p>
+            </div>
+        </div>
+    </div>
+    <a href="#" class="home-btn" onclick="showPage('page1')">На главную</a>
+</div>
+
+<script>
+    function showPage(pageId) {
+        // Скрываем все страницы
+        const pages = document.querySelectorAll('.page');
+        pages.forEach(page => page.classList.remove('active'));
+        
+        // Показываем нужную
+        document.getElementById(pageId).classList.add('active');
+        
+        // Прокрутка вверх
+        window.scrollTo(0, 0);
+    }
+</script>
+
+</body>
+</html>
